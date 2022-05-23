@@ -80,7 +80,14 @@ class Discriminator(nn.Module):
 
         return validity
 
+# 实例化模型
+model = Generator()
 
+# 将模型写入tensorboard
+# 添加图像初始的大小，在输出的model中会根据网络训练显示路径上的图像大小
+init_img = torch.zeros(1, 3, 128, 128)
+tb_writer.add_graph(model, init_img)
+    
 # Loss function
 adversarial_loss = torch.nn.BCELoss()
 
@@ -117,6 +124,8 @@ Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 # ----------
 #  Training
 # ----------
+#实例化
+tb_writer = SummaryWriter(log_dir="runs/gan_tensorboard")
 
 for epoch in range(opt.n_epochs):
     for i, (imgs, _) in enumerate(dataloader):
