@@ -84,12 +84,10 @@ class Discriminator(nn.Module):
         return validity
 
 # 实例化模型
-model = Generator()
+#model = Generator()
 
 # 将模型写入tensorboard
-# 添加图像初始的大小，在输出的model中会根据网络训练显示路径上的图像大小
-init_img = torch.zeros(1, 3, 128, 128)
-tb_writer.add_graph(model, init_img)
+tb_writer.add_graph(model)
     
 # Loss function
 adversarial_loss = torch.nn.BCELoss()
