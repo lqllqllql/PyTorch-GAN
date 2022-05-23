@@ -84,10 +84,10 @@ class Discriminator(nn.Module):
         return validity
 
 # 实例化模型
-model = Generator()
+#model = Generator()
 
 # 将模型写入tensorboard
-tb_writer.add_graph(model)
+#tb_writer.add_graph(model)
     
 # Loss function
 adversarial_loss = torch.nn.BCELoss()
