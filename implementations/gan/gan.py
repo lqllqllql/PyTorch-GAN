@@ -13,6 +13,7 @@ from torch.autograd import Variable
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
+from torch.utils.tensorboard import SummaryWriter
 
 os.makedirs("images", exist_ok=True)
 
