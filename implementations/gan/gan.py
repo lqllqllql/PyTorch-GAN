@@ -33,6 +33,8 @@ print(opt)
 img_shape = (opt.channels, opt.img_size, opt.img_size)
 
 cuda = True if torch.cuda.is_available() else False
+#实例化
+tb_writer = SummaryWriter(log_dir="runs/gan_tensorboard")
 
 
 class Generator(nn.Module):
@@ -124,8 +126,6 @@ Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 # ----------
 #  Training
 # ----------
-#实例化
-tb_writer = SummaryWriter(log_dir="runs/gan_tensorboard")
 
 for epoch in range(opt.n_epochs):
     for i, (imgs, _) in enumerate(dataloader):
