@@ -121,8 +121,8 @@ optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=opt.lr, betas=(opt
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
 # 将模型写入tensorboard
-tb_writer.add_graph(generator)
-tb_writer.add_graph(discriminator)
+#tb_writer.add_graph(generator)
+#tb_writer.add_graph(discriminator)
 
 # ----------
 #  Training
