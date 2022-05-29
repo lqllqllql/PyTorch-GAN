@@ -94,10 +94,6 @@ adversarial_loss = torch.nn.BCELoss()
 generator = Generator()
 discriminator = Discriminator()
 
-# 将模型写入tensorboard
-tb_writer.add_graph(generator)
-tb_writer.add_graph(discriminator)
-
 if cuda:
     generator.cuda()
     discriminator.cuda()
@@ -123,6 +119,10 @@ optimizer_G = torch.optim.Adam(generator.parameters(), lr=opt.lr, betas=(opt.b1,
 optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=opt.lr, betas=(opt.b1, opt.b2))
 
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
+
+# 将模型写入tensorboard
+tb_writer.add_graph(generator)
+tb_writer.add_graph(discriminator)
 
 # ----------
 #  Training
