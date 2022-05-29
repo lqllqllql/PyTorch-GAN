@@ -123,6 +123,7 @@ Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 # 将模型写入tensorboard
 #tb_writer.add_graph(generator)
 #tb_writer.add_graph(discriminator)
+####为什么模型图画不了？？
 
 # ----------
 #  Training
