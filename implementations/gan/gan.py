@@ -90,7 +90,6 @@ class Discriminator(nn.Module):
 adversarial_loss = torch.nn.BCELoss()
 
 # Initialize generator and discriminator
-# 实例化模型
 generator = Generator()
 discriminator = Discriminator()
 
@@ -120,9 +119,13 @@ optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=opt.lr, betas=(opt
 
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
+# 实例化模型
+model_g=generator.to(Tensor)
+model_d=discriminator.to(Tensor)
+
 # 将模型写入tensorboard
-#tb_writer.add_graph(generator)
-#tb_writer.add_graph(discriminator)
+tb_writer.add_graph(model_g)
+tb_writer.add_graph(model_d)
 ####为什么模型图画不了？？
 
 # ----------
