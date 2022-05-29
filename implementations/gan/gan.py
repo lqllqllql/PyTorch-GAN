@@ -82,19 +82,18 @@ class Discriminator(nn.Module):
         validity = self.model(img_flat)
 
         return validity
-
-# 实例化模型
-#model = Generator()
-
-# 将模型写入tensorboard
-#tb_writer.add_graph(model)
     
 # Loss function
 adversarial_loss = torch.nn.BCELoss()
 
 # Initialize generator and discriminator
+# 实例化模型
 generator = Generator()
 discriminator = Discriminator()
+
+# 将模型写入tensorboard
+tb_writer.add_graph(generator)
+tb_writer.add_graph(discriminator)
 
 if cuda:
     generator.cuda()
@@ -172,6 +171,11 @@ for epoch in range(opt.n_epochs):
             "[Epoch %d/%d] [Batch %d/%d] [D loss: %f] [G loss: %f]"
             % (epoch, opt.n_epochs, i, len(dataloader), d_loss.item(), g_loss.item())
         )
+        
+        # 将generator、discriminator的loss写入tensorboard
+        tags=["G_loss","D_loss"]
+        tb_writer.add_scalar(tags[0], g_loss, epoch)
+        tb_writer.add_scalar(tags[1], d_loss, epoch)
 
         batches_done = epoch * len(dataloader) + i
         if batches_done % opt.sample_interval == 0:
