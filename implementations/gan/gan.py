@@ -120,12 +120,12 @@ optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=opt.lr, betas=(opt
 Tensor = torch.cuda.FloatTensor if cuda else torch.FloatTensor
 
 # 实例化模型
-model_g=Generator().to(Tensor)
-model_d=Discriminator().to(Tensor)
+# model_g=Generator().to(Tensor)
+# model_d=Discriminator().to(Tensor)
 
 # 将模型写入tensorboard
-tb_writer.add_graph(model_g)
-tb_writer.add_graph(model_d)
+# tb_writer.add_graph(model_g)
+# tb_writer.add_graph(model_d)
 ####为什么模型图画不了？？
 
 # ----------
